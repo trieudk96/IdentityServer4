@@ -1,0 +1,9 @@
+/IdentityServerSql/obj
+/IdentityServerSql/bin
+/IdentityClient/IdentityClient/bin
+/IdentityClient/IdentityClient/obj
+/IdentityClient/.vs
+/IdentityServerSql/.vs
+/BuildingClaims/identityServer/obj
+/BuildingClaims/identityServer/bin
+/BuildingClaims/.vs
