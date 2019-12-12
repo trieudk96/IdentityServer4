@@ -18,7 +18,7 @@ namespace IdentityServerSql.Data
             {
                 new Client
                 {
-                    //AccessTokenLifetime = 10,
+                    AccessTokenLifetime = 1,
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     AllowOfflineAccess = true,
                     AccessTokenType = AccessTokenType.Jwt,
@@ -70,7 +70,7 @@ namespace IdentityServerSql.Data
             };
         public static List<ApiResource> ApiResources =>
              new List<ApiResource>{
-                new ApiResource("api1", "Some API 1"),
+                new ApiResource("api1", "Some API 1"){ApiSecrets = new List<Secret>{new Secret("api1".Sha256())}},
 
                 new ApiResource
                 {
@@ -103,7 +103,7 @@ namespace IdentityServerSql.Data
                         new Scope("api2.has_claims",new []{"email","name","openid","phone"})
                     },
                 },
-                 new ApiResource
+                new ApiResource
                 {
                     Name = "api3",
                     Scopes = new List<Scope>
@@ -112,6 +112,7 @@ namespace IdentityServerSql.Data
                     },
                     UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Email,JwtClaimTypes.Audience },
                 },
+               
              };
 
         public static List<TestUser> Users => new List<TestUser>

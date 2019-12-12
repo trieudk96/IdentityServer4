@@ -22,6 +22,7 @@ namespace identityServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddControllers();
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 //.AddInMemoryApiResources(DemoData.ApiResources)
@@ -35,6 +36,7 @@ namespace identityServer
                 //.AddDeviceFlowStore<MyCustomDeviceFlowStore>();
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>()
                 .AddTransient<IProfileService, ProfileService>()
+                .AddTransient<ICustomTokenRequestValidator, CustomTokenRequestValidator>()
                 .AddTransient<IAuthRepository, AuthRepository>();
 
             //services.AddTransient<IAuthorizationCodeStore, AuthorizationCodeStore>();
@@ -59,6 +61,7 @@ namespace identityServer
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                //endpoints.MapControllers();
             });
         }
     }
